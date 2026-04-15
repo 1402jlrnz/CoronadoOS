@@ -1,8 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     const osLinks = document.querySelectorAll('.os-link');
+    const activityLinks = document.querySelectorAll('.activity-link');
+    const caseLinks = document.querySelectorAll('.case-link');
     const sections = document.querySelectorAll('.content-section');
     const osSections = document.querySelectorAll('.os-section');
+    const activitySections = document.querySelectorAll('.activity-section');
+    const caseSections = document.querySelectorAll('.case-section');
 
     // Handle main navigation clicks
     navLinks.forEach(link => {
@@ -21,15 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
                 targetSection.classList.add('active');
-                
-                // If clicking Windows Installation, show the first OS section by default
-                if (targetId === 'windows-installation') {
-                    hideAllOSSections();
-                    const firstOSSection = document.querySelector('.os-section');
-                    if (firstOSSection) {
-                        firstOSSection.classList.add('active');
-                    }
-                }
             }
         });
     });
@@ -54,12 +49,60 @@ document.addEventListener('DOMContentLoaded', function() {
                     windowsSection.classList.add('active');
                 }
                 
-                // Update nav links to show Windows Installation as active
+                // Update nav links to remove active from all links (Windows Installation is not clickable)
                 navLinks.forEach(l => l.classList.remove('active'));
-                const windowsLink = document.querySelector('a[href="#windows-installation"]');
-                if (windowsLink) {
-                    windowsLink.classList.add('active');
+            }
+        });
+    });
+
+    // Handle activity link clicks in dropdown
+    activityLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Hide all activity sections
+            hideAllActivitySections();
+            
+            // Show the selected activity section
+            const targetId = this.getAttribute('href').substring(1);
+            const targetActivitySection = document.getElementById(targetId);
+            if (targetActivitySection) {
+                targetActivitySection.classList.add('active');
+                
+                // Ensure Laboratory Activities section is active
+                const labSection = document.getElementById('laboratory-activities');
+                if (labSection) {
+                    labSection.classList.add('active');
                 }
+                
+                // Update nav links to remove active from all links (Laboratory Activities is not clickable)
+                navLinks.forEach(l => l.classList.remove('active'));
+            }
+        });
+    });
+
+    // Handle case link clicks in dropdown
+    caseLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Hide all case sections
+            hideAllCaseSections();
+            
+            // Show the selected case section
+            const targetId = this.getAttribute('href').substring(1);
+            const targetCaseSection = document.getElementById(targetId);
+            if (targetCaseSection) {
+                targetCaseSection.classList.add('active');
+                
+                // Ensure Case Study section is active
+                const caseSection = document.getElementById('case-study');
+                if (caseSection) {
+                    caseSection.classList.add('active');
+                }
+                
+                // Update nav links to remove active from all links (Case Study is not clickable)
+                navLinks.forEach(l => l.classList.remove('active'));
             }
         });
     });
@@ -67,6 +110,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Helper function to hide all OS sections
     function hideAllOSSections() {
         osSections.forEach(section => {
+            section.classList.remove('active');
+        });
+    }
+
+    // Helper function to hide all activity sections
+    function hideAllActivitySections() {
+        activitySections.forEach(section => {
+            section.classList.remove('active');
+        });
+    }
+
+    // Helper function to hide all case sections
+    function hideAllCaseSections() {
+        caseSections.forEach(section => {
             section.classList.remove('active');
         });
     }
