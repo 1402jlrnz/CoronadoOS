@@ -8,8 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const activitySections = document.querySelectorAll('.activity-section');
     const caseSections = document.querySelectorAll('.case-section');
 
-    // Handle main navigation clicks
+    // Handle main navigation clicks (only for actual links, not dropdown triggers)
     navLinks.forEach(link => {
+        // Skip dropdown triggers (spans without href)
+        if (!link.hasAttribute('href')) {
+            return;
+        }
+        
         link.addEventListener('click', function(e) {
             e.preventDefault();
             

@@ -79,6 +79,7 @@ header {
 
 .dropdown .nav-link {
     cursor: default;
+    pointer-events: none;
 }
 
 .dropdown-content {
@@ -96,49 +97,17 @@ header {
     max-height: 400px;
     overflow-y: auto;
     border: 1px solid rgba(139, 115, 85, 0.1);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
-    animation: slideDown 0.3s ease-out;
+    opacity: 1;
+    transform: translateY(0);
 }
 
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.os-link {
-    display: block;
-    padding: 0.8rem 1.2rem;
-    color: #333;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(102, 126, 234, 0.1);
-}
-
-.os-link:first-child {
-    border-radius: 12px 12px 0 0;
-}
-
-.os-link:last-child {
-    border-bottom: none;
-    border-radius: 0 0 12px 12px;
-}
-
-.os-link:hover {
-    background: linear-gradient(135deg, #8B7355, #A0826D);
-    color: white;
-    padding-left: 1.5rem;
-}
 
 /* Windows Installation Section Styles */
 .os-section {
@@ -246,6 +215,8 @@ header {
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     background: #000;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .video-container iframe {
@@ -281,31 +252,6 @@ header {
     text-shadow: none;
 }
 
-.activity-link {
-    display: block;
-    padding: 0.8rem 1.2rem;
-    color: #333;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(139, 115, 85, 0.1);
-}
-
-.activity-link:first-child {
-    border-radius: 12px 12px 0 0;
-}
-
-.activity-link:last-child {
-    border-bottom: none;
-    border-radius: 0 0 12px 12px;
-}
-
-.activity-link:hover {
-    background: linear-gradient(135deg, #8B7355, #A0826D);
-    color: white;
-    padding-left: 1.5rem;
-}
 
 /* Case Study Section Styles */
 .case-section {
@@ -330,31 +276,6 @@ header {
     text-shadow: none;
 }
 
-.case-link {
-    display: block;
-    padding: 0.8rem 1.2rem;
-    color: #333;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(139, 115, 85, 0.1);
-}
-
-.case-link:first-child {
-    border-radius: 12px 12px 0 0;
-}
-
-.case-link:last-child {
-    border-bottom: none;
-    border-radius: 0 0 12px 12px;
-}
-
-.case-link:hover {
-    background: linear-gradient(135deg, #8B7355, #A0826D);
-    color: white;
-    padding-left: 1.5rem;
-}
 
 /* Ensure all dropdown links have consistent styling */
 .os-link, .activity-link, .case-link {
