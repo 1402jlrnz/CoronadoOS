@@ -8,24 +8,41 @@ document.addEventListener('DOMContentLoaded', function() {
     const activitySections = document.querySelectorAll('.activity-section');
     const caseSections = document.querySelectorAll('.case-section');
 
-    // Handle main navigation clicks (only for actual links, not dropdown triggers)
+    // Helper functions
+    function hideAllOSSections() {
+        osSections.forEach(section => section.classList.remove('active'));
+    }
+    function hideAllActivitySections() {
+        activitySections.forEach(section => section.classList.remove('active'));
+    }
+    function hideAllCaseSections() {
+        caseSections.forEach(section => section.classList.remove('active'));
+    }
+
+    // Make dropdown trigger spans non-clickable (no navigation)
+    document.querySelectorAll('.dropdown > .nav-link').forEach(trigger => {
+        trigger.style.cursor = 'default';
+        trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+    });
+
+    // Handle main nav link clicks (HOME and ABOUT ME only)
     navLinks.forEach(link => {
-        // Skip dropdown triggers (spans without href)
-        if (!link.hasAttribute('href')) {
-            return;
-        }
-        
+        if (!link.hasAttribute('href')) return;
+
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            
-            // Remove active class from all links and sections
+
             navLinks.forEach(l => l.classList.remove('active'));
             sections.forEach(s => s.classList.remove('active'));
-            
-            // Add active class to clicked link
+            hideAllOSSections();
+            hideAllActivitySections();
+            hideAllCaseSections();
+
             this.classList.add('active');
-            
-            // Show corresponding section
+
             const targetId = this.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
@@ -34,124 +51,69 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Handle OS link clicks in dropdown
+    // Handle OS submenu link clicks
     osLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            
-            // Hide all content sections first
+
             sections.forEach(s => s.classList.remove('active'));
-            
-            // Hide all OS sections
             hideAllOSSections();
             hideAllActivitySections();
             hideAllCaseSections();
-            
-            // Remove active class from all nav links
             navLinks.forEach(l => l.classList.remove('active'));
-            
-            // Show the selected OS section
+
             const targetId = this.getAttribute('href').substring(1);
             const targetOSSection = document.getElementById(targetId);
             if (targetOSSection) {
                 targetOSSection.classList.add('active');
-                
-                // Ensure Windows Installation section is active
-                const windowsSection = document.getElementById('windows-installation');
-                if (windowsSection) {
-                    windowsSection.classList.add('active');
-                }
+                document.getElementById('windows-installation').classList.add('active');
             }
         });
     });
 
-    // Handle activity link clicks in dropdown
+    // Handle activity submenu link clicks
     activityLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            
-            // Hide all content sections first
+
             sections.forEach(s => s.classList.remove('active'));
-            
-            // Hide all sections
             hideAllOSSections();
             hideAllActivitySections();
             hideAllCaseSections();
-            
-            // Remove active class from all nav links
             navLinks.forEach(l => l.classList.remove('active'));
-            
-            // Show the selected activity section
+
             const targetId = this.getAttribute('href').substring(1);
             const targetActivitySection = document.getElementById(targetId);
             if (targetActivitySection) {
                 targetActivitySection.classList.add('active');
-                
-                // Ensure Laboratory Activities section is active
-                const labSection = document.getElementById('laboratory-activities');
-                if (labSection) {
-                    labSection.classList.add('active');
-                }
+                document.getElementById('laboratory-activities').classList.add('active');
             }
         });
     });
 
-    // Handle case link clicks in dropdown
+    // Handle case submenu link clicks
     caseLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            
-            // Hide all content sections first
+
             sections.forEach(s => s.classList.remove('active'));
-            
-            // Hide all sections
             hideAllOSSections();
             hideAllActivitySections();
             hideAllCaseSections();
-            
-            // Remove active class from all nav links
             navLinks.forEach(l => l.classList.remove('active'));
-            
-            // Show the selected case section
+
             const targetId = this.getAttribute('href').substring(1);
             const targetCaseSection = document.getElementById(targetId);
             if (targetCaseSection) {
                 targetCaseSection.classList.add('active');
-                
-                // Ensure Case Study section is active
-                const caseSection = document.getElementById('case-study');
-                if (caseSection) {
-                    caseSection.classList.add('active');
-                }
+                document.getElementById('case-study').classList.add('active');
             }
         });
     });
 
-    // Helper function to hide all OS sections
-    function hideAllOSSections() {
-        osSections.forEach(section => {
-            section.classList.remove('active');
-        });
-    }
-
-    // Helper function to hide all activity sections
-    function hideAllActivitySections() {
-        activitySections.forEach(section => {
-            section.classList.remove('active');
-        });
-    }
-
-    // Helper function to hide all case sections
-    function hideAllCaseSections() {
-        caseSections.forEach(section => {
-            section.classList.remove('active');
-        });
-    }
-
-    // Set home as default active section
+    // Default: show home
     const homeLink = document.querySelector('a[href="#home"]');
     const homeSection = document.getElementById('home');
-    
     if (homeLink && homeSection) {
         homeLink.classList.add('active');
         homeSection.classList.add('active');
