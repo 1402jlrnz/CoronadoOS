@@ -88,8 +88,7 @@ header {
 }
 
 .dropdown > .nav-link {
-    cursor: default;
-    pointer-events: none;
+    cursor: pointer;
     user-select: none;
 }
 
@@ -109,7 +108,7 @@ header {
     border: 1px solid rgba(139, 115, 85, 0.1);
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown.active .dropdown-content {
     display: block;
 }
 

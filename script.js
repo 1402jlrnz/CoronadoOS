@@ -19,13 +19,33 @@ document.addEventListener('DOMContentLoaded', function() {
         caseSections.forEach(section => section.classList.remove('active'));
     }
 
-    // Make dropdown trigger spans non-clickable (no navigation)
-    document.querySelectorAll('.dropdown > .nav-link').forEach(trigger => {
-        trigger.style.cursor = 'default';
+    // Handle dropdown click functionality
+    document.querySelectorAll('.dropdown').forEach(dropdown => {
+        const trigger = dropdown.querySelector('.nav-link');
+        
         trigger.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
+            
+            // Close all other dropdowns
+            document.querySelectorAll('.dropdown').forEach(otherDropdown => {
+                if (otherDropdown !== dropdown) {
+                    otherDropdown.classList.remove('active');
+                }
+            });
+            
+            // Toggle current dropdown
+            dropdown.classList.toggle('active');
         });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
     });
 
     // Handle main nav link clicks (HOME and ABOUT ME only)
@@ -34,6 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         link.addEventListener('click', function(e) {
             e.preventDefault();
+
+            // Close all dropdowns
+            document.querySelectorAll('.dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
 
             navLinks.forEach(l => l.classList.remove('active'));
             sections.forEach(s => s.classList.remove('active'));
@@ -56,6 +81,11 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             e.preventDefault();
 
+            // Close all dropdowns
+            document.querySelectorAll('.dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+
             sections.forEach(s => s.classList.remove('active'));
             hideAllOSSections();
             hideAllActivitySections();
@@ -76,6 +106,11 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             e.preventDefault();
 
+            // Close all dropdowns
+            document.querySelectorAll('.dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+
             sections.forEach(s => s.classList.remove('active'));
             hideAllOSSections();
             hideAllActivitySections();
@@ -95,6 +130,11 @@ document.addEventListener('DOMContentLoaded', function() {
     caseLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
+
+            // Close all dropdowns
+            document.querySelectorAll('.dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
 
             sections.forEach(s => s.classList.remove('active'));
             hideAllOSSections();
