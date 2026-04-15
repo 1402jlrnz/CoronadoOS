@@ -77,6 +77,10 @@ header {
     position: relative;
 }
 
+.dropdown .nav-link {
+    cursor: default;
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -91,6 +95,7 @@ header {
     backdrop-filter: blur(10px);
     max-height: 400px;
     overflow-y: auto;
+    border: 1px solid rgba(139, 115, 85, 0.1);
 }
 
 .dropdown:hover .dropdown-content {
@@ -346,6 +351,34 @@ header {
 }
 
 .case-link:hover {
+    background: linear-gradient(135deg, #8B7355, #A0826D);
+    color: white;
+    padding-left: 1.5rem;
+}
+
+/* Ensure all dropdown links have consistent styling */
+.os-link, .activity-link, .case-link {
+    display: block;
+    padding: 0.8rem 1.2rem;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(139, 115, 85, 0.1);
+    background: transparent;
+}
+
+.os-link:first-child, .activity-link:first-child, .case-link:first-child {
+    border-radius: 12px 12px 0 0;
+}
+
+.os-link:last-child, .activity-link:last-child, .case-link:last-child {
+    border-bottom: none;
+    border-radius: 0 0 12px 12px;
+}
+
+.os-link:hover, .activity-link:hover, .case-link:hover {
     background: linear-gradient(135deg, #8B7355, #A0826D);
     color: white;
     padding-left: 1.5rem;
