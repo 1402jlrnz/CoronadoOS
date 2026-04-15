@@ -39,8 +39,16 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             
+            // Hide all content sections first
+            sections.forEach(s => s.classList.remove('active'));
+            
             // Hide all OS sections
             hideAllOSSections();
+            hideAllActivitySections();
+            hideAllCaseSections();
+            
+            // Remove active class from all nav links
+            navLinks.forEach(l => l.classList.remove('active'));
             
             // Show the selected OS section
             const targetId = this.getAttribute('href').substring(1);
@@ -53,9 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (windowsSection) {
                     windowsSection.classList.add('active');
                 }
-                
-                // Update nav links to remove active from all links (Windows Installation is not clickable)
-                navLinks.forEach(l => l.classList.remove('active'));
             }
         });
     });
@@ -65,8 +70,16 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Hide all activity sections
+            // Hide all content sections first
+            sections.forEach(s => s.classList.remove('active'));
+            
+            // Hide all sections
+            hideAllOSSections();
             hideAllActivitySections();
+            hideAllCaseSections();
+            
+            // Remove active class from all nav links
+            navLinks.forEach(l => l.classList.remove('active'));
             
             // Show the selected activity section
             const targetId = this.getAttribute('href').substring(1);
@@ -79,9 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (labSection) {
                     labSection.classList.add('active');
                 }
-                
-                // Update nav links to remove active from all links (Laboratory Activities is not clickable)
-                navLinks.forEach(l => l.classList.remove('active'));
             }
         });
     });
@@ -91,8 +101,16 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Hide all case sections
+            // Hide all content sections first
+            sections.forEach(s => s.classList.remove('active'));
+            
+            // Hide all sections
+            hideAllOSSections();
+            hideAllActivitySections();
             hideAllCaseSections();
+            
+            // Remove active class from all nav links
+            navLinks.forEach(l => l.classList.remove('active'));
             
             // Show the selected case section
             const targetId = this.getAttribute('href').substring(1);
@@ -105,9 +123,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (caseSection) {
                     caseSection.classList.add('active');
                 }
-                
-                // Update nav links to remove active from all links (Case Study is not clickable)
-                navLinks.forEach(l => l.classList.remove('active'));
             }
         });
     });

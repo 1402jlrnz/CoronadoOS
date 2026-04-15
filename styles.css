@@ -77,9 +77,10 @@ header {
     position: relative;
 }
 
-.dropdown .nav-link {
+.dropdown > .nav-link {
     cursor: default;
     pointer-events: none;
+    user-select: none;
 }
 
 .dropdown-content {
