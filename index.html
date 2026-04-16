@@ -37,6 +37,7 @@
                     <li class="dropdown">
                         <span class="nav-link">LABORATORY ACTIVITIES</span>
                         <div class="dropdown-content">
+                            <a href="#adding-users-logging" class="activity-link">Adding Users and Logging In</a>
                             <a href="#dhcp-domain" class="activity-link">DHCP Role and Domain</a>
                             <a href="#raid-configuration" class="activity-link">RAID Configuration</a>
                             <a href="#file-server" class="activity-link">File Server Setup</a>
@@ -862,6 +863,47 @@
                 <h1>Laboratory Activities</h1>
                 <p>Select a laboratory activity from the menu above to view step-by-step instructions and video tutorials.</p>
                 
+                <!-- Adding Users and Logging In -->
+                <div id="adding-users-logging" class="activity-section">
+                    <h2>Adding Users and Logging In 5 Person Per Section</h2>
+                    <div class="installation-steps">
+                        <div class="step">
+                            <h3>1. Create Organizational Units</h3>
+                            <p>Open Active Directory Users and Computers → Create separate OUs for each department or section (e.g., Sales, Marketing, IT, HR, Finance).</p>
+                        </div>
+                        <div class="step">
+                            <h3>2. Create User Accounts</h3>
+                            <p>Right-click each OU → New → User → Create 5 user accounts per section with proper naming convention and initial passwords.</p>
+                        </div>
+                        <div class="step">
+                            <h3>3. Configure User Properties</h3>
+                            <p>Set user profile information, group memberships, and password policies for each user account.</p>
+                        </div>
+                        <div class="step">
+                            <h3>4. Set Up Login Scripts</h3>
+                            <p>Configure login scripts or group policies to map network drives and set up desktop environments for each user.</p>
+                        </div>
+                        <div class="step">
+                            <h3>5. Test User Logins</h3>
+                            <p>Verify each user can successfully log in to their assigned workstation with their credentials and access appropriate resources.</p>
+                        </div>
+                    </div>
+                    <div class="video-section">
+                        <h3>Video Tutorial</h3>
+                        <div class="video-container">
+                            <iframe 
+                                width="560" 
+                                height="315" 
+                                src="https://www.youtube.com/embed/O2FEgAivOkE" 
+                                title="Adding Users and Logging In Tutorial" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- DHCP Role and Domain -->
                 <div id="dhcp-domain" class="activity-section">
                     <h2>DHCP Role and Joining Workstation in Domain</h2>
