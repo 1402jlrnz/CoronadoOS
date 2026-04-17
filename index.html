@@ -1457,27 +1457,66 @@
 
                 <!-- Group Policy Case -->
                 <div id="group-policy-case" class="case-section">
-                    <h2>Group Policy Implementation</h2>
+                    <h2>8. Group Policy Configuration</h2>
                     <div class="installation-steps">
                         <div class="step">
-                            <h3>1. Plan Group Policy Structure</h3>
-                            <p>Design OU structure and plan GPO hierarchy for efficient management.</p>
+                            <h3>I. Department Desktop Wallpapers</h3>
+                            <p>Create unique desktop wallpaper for each department. Configure GPO to apply specific wallpaper based on OU membership (Basic Arts, Electrical, Mechanical, Civil, Administrative departments). Use Group Policy Preferences → Desktop → Desktop Wallpaper.</p>
                         </div>
                         <div class="step">
-                            <h3>2. Create and Configure GPOs</h3>
-                            <p>Build policies for security, desktop configuration, and application deployment.</p>
+                            <h3>II. Security Restrictions - Enable</h3>
+                            <p><strong>a.</strong> Prohibit access to Control Panel and PC settings<br>
+                            <strong>b.</strong> Network security: Do not store LAN manager hash value on next password change<br>
+                            <strong>c.</strong> Prevent access to the command prompt<br>
+                            <strong>d.</strong> No auto-restart with logged on users for scheduled automatic updates installations<br>
+                            <strong>e.</strong> All removable storage classes: Deny all accesses<br>
+                            <strong>f.</strong> Prohibit user install</p>
                         </div>
                         <div class="step">
-                            <h3>3. Link GPOs to OUs</h3>
-                            <p>Apply policies to appropriate organizational units and set inheritance.</p>
+                            <h3>III. Account Policies - Disable</h3>
+                            <p><strong>g.</strong> Accounts: Guest account status (Disabled)<br>
+                            <strong>h.</strong> Minimum password length set to at least 12 characters<br>
+                            <strong>i.</strong> Maximum password age 42 days</p>
                         </div>
                         <div class="step">
-                            <h3>4. Configure Group Policy Preferences</h3>
-                            <p>Set up drive mappings, printer deployments, and user preferences.</p>
+                            <h3>IV. Account Lockout Policy</h3>
+                            <p><strong>k.</strong> Account lockout duration: 30 minutes<br>
+                            <strong>l.</strong> Account lockout threshold: 3 invalid logon attempts<br>
+                            <strong>m.</strong> Reset account lockout counter after: 30 minutes</p>
                         </div>
                         <div class="step">
-                            <h3>5. Test and Troubleshoot GPO Application</h3>
-                            <p>Verify policy application and resolve any conflicts or issues.</p>
+                            <h3>V. Audit and Access Control</h3>
+                            <p><strong>j.</strong> Audit directory service access and audit directory service changes<br>
+                            Group Policy Object (GPO) settings should only be accessed by IT admins</p>
+                        </div>
+                        <div class="step">
+                            <h3>VI. Start Menu Restrictions - Users Only</h3>
+                            <p><strong>n.</strong> Remove links and access to Windows Update: User (Enable), Admin (Disable)<br>
+                            <strong>o.</strong> Remove Network Connections from the Start Menu: User (Enable), Admin (Disable)<br>
+                            <strong>p.</strong> Remove Help menu from the Start Menu: User (Enable), Admin (Disable)<br>
+                            <strong>q.</strong> Remove Run menu from the Start Menu: User (Enable), Admin (Disable)<br>
+                            <strong>r.</strong> Remove My Pictures icon from the Start Menu: User (Enable)<br>
+                            <strong>s.</strong> Remove My Music icon from the Start Menu: User (Enable)<br>
+                            <strong>t.</strong> Remove My Network Places icon from the Start Menu: User (Enable)<br>
+                            <strong>u.</strong> Add Logoff on the Start Menu: Enable<br>
+                            <strong>v.</strong> Remove Task Manager from Ctrl+Alt+Del: User (Enable), Admin (Disable)</p>
+                        </div>
+                        <div class="step">
+                            <h3>VII. Internet Explorer and Network Settings</h3>
+                            <p><strong>w.</strong> Internet Explorer browser title: Title bar text: tupt.edu.ph<br>
+                            <strong>x.</strong> Prohibit access to properties of components of a LAN connections: User (Enable), Admin (Disable)<br>
+                            <strong>y.</strong> Prevent access to the command prompt: User (Enable), Admin (Disable)<br>
+                            <strong>z.</strong> Prevent access to registry editing tools: User (Enable), Admin (Disable)<br>
+                            <strong>aa.</strong> Prohibit access to the Control Panel: User (Enable), Admin (Disable)</p>
+                        </div>
+                        <div class="step">
+                            <h3>VIII. Implementation Steps</h3>
+                            <p>1. Create separate GPOs for each department and for user/admin restrictions<br>
+                            2. Link department GPOs to respective OUs<br>
+                            3. Link security restriction GPOs to domain level with proper filtering<br>
+                            4. Use Security Group Filtering to apply user vs admin policies<br>
+                            5. Test policy application with gpupdate /force<br>
+                            6. Verify all restrictions are working correctly</p>
                         </div>
                     </div>
                     <div class="video-section">
