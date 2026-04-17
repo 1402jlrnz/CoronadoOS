@@ -49,15 +49,15 @@
                     <li class="dropdown">
                         <span class="nav-link">CASE STUDY</span>
                         <div class="dropdown-content">
-                            <a href="#domain-controller" class="case-link">Domain Controller</a>
-                            <a href="#adding-user" class="case-link">Adding User</a>
-                            <a href="#dhcp-server" class="case-link">DHCP Server</a>
-                            <a href="#file-sharing" class="case-link">File Sharing</a>
-                            <a href="#raid" class="case-link">RAID</a>
-                            <a href="#remote-desktop" class="case-link">Remote Desktop</a>
-                            <a href="#iis" class="case-link">IIS</a>
-                            <a href="#group-policy-case" class="case-link">Group Policy</a>
-                            <a href="#wds-case" class="case-link">Windows Deployment Service</a>
+                            <a href="#tup-domain-controller" class="case-link">Domain Controller Setup</a>
+                            <a href="#tup-user-management" class="case-link">User Management</a>
+                            <a href="#tup-dhcp-server" class="case-link">DHCP Server</a>
+                            <a href="#tup-file-sharing" class="case-link">File Sharing</a>
+                            <a href="#tup-raid" class="case-link">RAID Configuration</a>
+                            <a href="#tup-remote-desktop" class="case-link">Remote Desktop</a>
+                            <a href="#tup-web-server" class="case-link">Web Server (IIS)</a>
+                            <a href="#tup-group-policy" class="case-link">Group Policy</a>
+                            <a href="#tup-wds" class="case-link">Windows Deployment Services</a>
                         </div>
                     </li>
                     <li><a href="#about-me" class="nav-link">ABOUT ME</a></li>
@@ -1154,32 +1154,32 @@
 
         <section id="case-study" class="content-section">
             <div class="container">
-                <h1>Case Study</h1>
-                <p>Select a case study from the menu above to view real-world implementation scenarios and video demonstrations.</p>
+                <h1>TUP Taguig Windows Server 2008 Domain Case Study</h1>
+                <p>Comprehensive deployment of Windows Server 2008 domain with all required roles and configurations for Technological University of the Philippines Taguig.</p>
                 
-                <!-- Domain Controller -->
-                <div id="domain-controller" class="case-section">
-                    <h2>Domain Controller Implementation</h2>
+                <!-- Domain Controller Setup -->
+                <div id="tup-domain-controller" class="case-section">
+                    <h2>1. Domain Controller Setup (tupt.edu.ph)</h2>
                     <div class="installation-steps">
                         <div class="step">
-                            <h3>1. Prepare Server Environment</h3>
-                            <p>Ensure server meets requirements, configure static IP address, and verify network connectivity.</p>
+                            <h3>1. Server Preparation</h3>
+                            <p>Install Windows Server 2008, configure static IP address, ensure proper hardware specifications, and verify network connectivity.</p>
                         </div>
                         <div class="step">
                             <h3>2. Install Active Directory Domain Services</h3>
-                            <p>Server Manager → Add Roles and Features → Select AD DS → Complete installation.</p>
+                            <p>Server Manager → Add Roles → Select Active Directory Domain Services → Add required features → Complete installation.</p>
                         </div>
                         <div class="step">
                             <h3>3. Promote to Domain Controller</h3>
-                            <p>Configure new forest, domain name, and set DSRM password for recovery.</p>
+                            <p>Run DCPROMO → Create a new domain in a new forest → Domain name: tupt.edu.ph → Set Forest and Domain functional levels → Configure DSRM password.</p>
                         </div>
                         <div class="step">
-                            <h3>4. Configure DNS and DHCP Integration</h3>
-                            <p>Set up DNS zones and configure DHCP options for automatic client configuration.</p>
+                            <h3>4. Configure DNS Services</h3>
+                            <p>DNS automatically installed with AD → Configure forward lookup zones → Set up reverse lookup zones → Configure root hints.</p>
                         </div>
                         <div class="step">
-                            <h3>5. Verify Domain Controller Functionality</h3>
-                            <p>Test domain operations, replication, and client authentication capabilities.</p>
+                            <h3>5. Verify Domain Controller</h3>
+                            <p>Check AD DS services, test DNS resolution, verify domain functionality with dcdiag and netdiag commands.</p>
                         </div>
                     </div>
                     <div class="video-section">
@@ -1189,7 +1189,7 @@
                                 width="560" 
                                 height="315" 
                                 src="https://www.youtube.com/embed/byvpEgPnQDo" 
-                                title="Domain Controller Implementation" 
+                                title="TUP Domain Controller Setup" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
@@ -1198,29 +1198,34 @@
                     </div>
                 </div>
 
-                <!-- Adding User -->
-                <div id="adding-user" class="case-section">
-                    <h2>Adding User Accounts</h2>
+                <!-- User Management -->
+                <div id="tup-user-management" class="case-section">
+                    <h2>2. User Management - Department Structure</h2>
                     <div class="installation-steps">
                         <div class="step">
-                            <h3>1. Open Active Directory Users and Computers</h3>
-                            <p>Server Manager → Tools → Active Directory Users and Computers.</p>
+                            <h3>1. Create Academic Department OUs</h3>
+                            <p><strong>Basic Art and Sciences Department:</strong> BTVTE Electrical, BTVTE Electronics, BTVTE Computer Hardware, BTVTE Computer Software<br>
+                            <strong>Electrical and Allied Department:</strong> Information Technology, Electrical Engineering, Electronics Engineering, Instrumentation and Control Technology, BET Mechatronics<br>
+                            <strong>Mechanical and Allied Department:</strong> Mechanical Engineering Technology, RAC Engineering Technology, Non Destructive Engineering Technology, Electromechanical Engineering Technology, Automotive Engineering Technology, BET ElectroMechanical<br>
+                            <strong>Civil and Allied Department:</strong> Civil Engineering, Civil Engineering Technology, Environmental Science, Chemical Engineering Technology</p>
                         </div>
                         <div class="step">
-                            <h3>2. Create Organizational Units</h3>
-                            <p>Structure OU hierarchy for departments, locations, or user types.</p>
+                            <h3>2. Create Administrative Department OUs</h3>
+                            <p>Registrar's Office, Director's Office, Research and Extension, Human Resource and Management Office, Finance Office, Supply and Procurement, Records Office, Library Services</p>
                         </div>
                         <div class="step">
-                            <h3>3. Create User Accounts</h3>
-                            <p>Right-click OU → New → User → Enter user details and set initial password.</p>
+                            <h3>3. Create Domain Users</h3>
+                            <p>Create user accounts for each department/office using real names. Distribute IT student names to all departments/sections/areas as specified.</p>
                         </div>
                         <div class="step">
-                            <h3>4. Configure User Properties</h3>
-                            <p>Set profile paths, group memberships, and account policies.</p>
+                            <h3>4. Configure Logon Restrictions</h3>
+                            <p><strong>Academic Users:</strong> Logon allowed 7:30 AM - 8:45 PM<br>
+                            <strong>Administrative Staff:</strong> Logon allowed 7:00 AM - 7:00 PM<br>
+                            <strong>Workstation Assignment:</strong> Users can only logon to assigned workstations (XP Class A network, 7 Class B network)</p>
                         </div>
                         <div class="step">
-                            <h3>5. Test User Account Functionality</h3>
-                            <p>Verify login, access permissions, and group policy application.</p>
+                            <h3>5. Configure Password Policies</h3>
+                            <p>Set password expiration to every 30 days for all users. Configure minimum password length and complexity requirements.</p>
                         </div>
                     </div>
                     <div class="video-section">
@@ -1230,7 +1235,7 @@
                                 width="560" 
                                 height="315" 
                                 src="https://www.youtube.com/embed/SAHHOwhdFnk" 
-                                title="Adding User Accounts Tutorial" 
+                                title="TUP User Management Setup" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
@@ -1240,28 +1245,32 @@
                 </div>
 
                 <!-- DHCP Server -->
-                <div id="dhcp-server" class="case-section">
-                    <h2>DHCP Server Configuration</h2>
+                <div id="tup-dhcp-server" class="case-section">
+                    <h2>3. DHCP Server Configuration</h2>
                     <div class="installation-steps">
                         <div class="step">
-                            <h3>1. Install DHCP Server Role</h3>
-                            <p>Server Manager → Add Roles and Features → DHCP Server → Complete setup.</p>
+                            <h3>1. Install DHCP Role</h3>
+                            <p>Server Manager → Add Roles → DHCP Server → Complete installation wizard with default settings.</p>
                         </div>
                         <div class="step">
-                            <h3>2. Authorize DHCP Server</h3>
-                            <p>Open DHCP MMC → Right-click server → Authorize in Active Directory.</p>
+                            <h3>2. Configure IP Blocks</h3>
+                            <p><strong>IP Block 1:</strong> 172.31.0.0 /16<br>
+                            <strong>IP Block 2:</strong> 10.0.0.0 /8<br>
+                            Create separate scopes for each IP block.</p>
                         </div>
                         <div class="step">
-                            <h3>3. Create DHCP Scopes</h3>
-                            <p>Define IP address ranges, subnet masks, and lease durations.</p>
+                            <h3>3. Configure DHCP Options</h3>
+                            <p><strong>Router IP Address:</strong> Valid IP address from each scope<br>
+                            <strong>DNS Server IP:</strong> Same as DHCP server IP address<br>
+                            <strong>Additional DNS:</strong> Add Google DNS (8.8.8.8) and OpenDNS (208.67.222.222)</p>
                         </div>
                         <div class="step">
-                            <h3>4. Configure Scope Options</h3>
-                            <p>Set default gateway, DNS servers, and domain name information.</p>
+                            <h3>4. Configure Lease Duration</h3>
+                            <p>Set IP address lease duration to expire every 8 hours for both scopes.</p>
                         </div>
                         <div class="step">
-                            <h3>5. Test DHCP Client Configuration</h3>
-                            <p>Verify clients receive IP addresses and proper network configuration.</p>
+                            <h3>5. Configure Address Exclusions</h3>
+                            <p>Do not distribute the first 30 and last 30 valid IP addresses in each scope. Set up exclusion ranges accordingly.</p>
                         </div>
                     </div>
                     <div class="video-section">
@@ -1270,8 +1279,8 @@
                             <iframe 
                                 width="560" 
                                 height="315" 
-                                src="https://www.youtube.com/embed/g_RciWWEwIE" 
-                                title="DHCP Server Configuration" 
+                                src="https://www.youtube.com/embed/2z6k2cBjQpY" 
+                                title="TUP DHCP Server Configuration" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
@@ -1281,28 +1290,30 @@
                 </div>
 
                 <!-- File Sharing -->
-                <div id="file-sharing" class="case-section">
-                    <h2>File Sharing Implementation</h2>
+                <div id="tup-file-sharing" class="case-section">
+                    <h2>4. File Sharing Configuration</h2>
                     <div class="installation-steps">
                         <div class="step">
-                            <h3>1. Install File Server Role</h3>
-                            <p>Server Manager → Add Roles and Features → File and Storage Services.</p>
+                            <h3>1. Department Public Folders</h3>
+                            <p>Create one public folder (read/write) for each department/section. Domain users cannot access other department folders. Set up proper share and NTFS permissions.</p>
                         </div>
                         <div class="step">
-                            <h3>2. Create Shared Folders</h3>
-                            <p>Create directory structure and configure shares for different departments.</p>
+                            <h3>2. University Public Folder</h3>
+                            <p>Create a university-wide public folder where all domain users can access (read/write). Configure permissions for all authenticated users.</p>
                         </div>
                         <div class="step">
-                            <h3>3. Configure Share Permissions</h3>
-                            <p>Set read/write access levels and user/group permissions.</p>
+                            <h3>3. Installer Folder</h3>
+                            <p>Create an installer folder containing applications that only the administrator can access. Restrict permissions to Administrators group only.</p>
                         </div>
                         <div class="step">
-                            <h3>4. Set NTFS Security</h3>
-                            <p>Configure file system permissions for granular access control.</p>
+                            <h3>4. File Type Restrictions</h3>
+                            <p><strong>All folders except Computer Engineering:</strong> Only office documents (.ppt, .doc, .docx, .xls, .xlsx, .pdf etc.)<br>
+                            <strong>Information Technology folder:</strong> All files except executable files (.exe, .bat, .cmd)</p>
                         </div>
                         <div class="step">
-                            <h3>5. Map Network Drives</h3>
-                            <p>Configure client access and test file sharing functionality.</p>
+                            <h3>5. Storage Quotas and Mapping</h3>
+                            <p><strong>Storage Quota:</strong> Set 1GB quota for each folder using File Server Resource Manager<br>
+                            <strong>Drive Mapping:</strong> Map shared folders for each client workstation using logon scripts or Group Policy preferences.</p>
                         </div>
                     </div>
                     <div class="video-section">
@@ -1311,8 +1322,8 @@
                             <iframe 
                                 width="560" 
                                 height="315" 
-                                src="https://www.youtube.com/embed/UgV6PCewPSk" 
-                                title="File Sharing Implementation" 
+                                src="https://www.youtube.com/embed/8mF6s2JqKlE" 
+                                title="TUP File Sharing Configuration" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
@@ -1321,29 +1332,29 @@
                     </div>
                 </div>
 
-                <!-- RAID -->
-                <div id="raid" class="case-section">
-                    <h2>RAID Implementation Case Study</h2>
+                <!-- RAID Configuration -->
+                <div id="tup-raid" class="case-section">
+                    <h2>5. RAID Configuration</h2>
                     <div class="installation-steps">
                         <div class="step">
-                            <h3>1. Assess Storage Requirements</h3>
-                            <p>Analyze capacity, performance, and redundancy needs for the environment.</p>
+                            <h3>1. Stripped Volume (RAID 0)</h3>
+                            <p>Create stripped volume using Disk Management → Combine multiple physical disks for improved performance. No redundancy - best for temporary data or non-critical applications.</p>
                         </div>
                         <div class="step">
-                            <h3>2. Select RAID Configuration</h3>
-                            <p>Choose appropriate RAID level based on requirements (RAID 0, 1, 5, 6, 10).</p>
+                            <h3>2. Mirrored Volume (RAID 1)</h3>
+                            <p>Create mirrored volume for critical system files. Provides exact duplication of data on two disks. Offers complete redundancy with 50% storage efficiency.</p>
                         </div>
                         <div class="step">
-                            <h3>3. Configure Hardware/Software RAID</h3>
-                            <p>Set up RAID controller or use Windows Storage Spaces for software RAID.</p>
+                            <h3>3. Spanned Volume</h3>
+                            <p>Create spanned volume to combine multiple disks into a single logical volume. Extends storage capacity across multiple drives with no performance improvement.</p>
                         </div>
                         <div class="step">
-                            <h3>4. Initialize and Format Volumes</h3>
-                            <p>Create partitions, format with appropriate file system, and assign drive letters.</p>
+                            <h3>4. RAID-5 Volume</h3>
+                            <p>Create RAID-5 volume with minimum 3 disks. Provides striping with distributed parity for good performance and redundancy. Can survive single disk failure.</p>
                         </div>
                         <div class="step">
-                            <h3>5. Monitor and Test RAID Array</h3>
-                            <p>Verify array health, performance, and failover capabilities.</p>
+                            <h3>5. Test and Monitor RAID</h3>
+                            <p>Verify all RAID arrays are functioning properly. Set up monitoring for disk health and RAID status. Test failover scenarios for redundancy verification.</p>
                         </div>
                     </div>
                     <div class="video-section">
@@ -1353,7 +1364,7 @@
                                 width="560" 
                                 height="315" 
                                 src="https://www.youtube.com/embed/PSzbGj3pJG8" 
-                                title="RAID Implementation Case Study" 
+                                title="TUP RAID Configuration" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
@@ -1363,28 +1374,28 @@
                 </div>
 
                 <!-- Remote Desktop -->
-                <div id="remote-desktop" class="case-section">
-                    <h2>Remote Desktop Services</h2>
+                <div id="tup-remote-desktop" class="case-section">
+                    <h2>6. Remote Desktop Configuration</h2>
                     <div class="installation-steps">
                         <div class="step">
-                            <h3>1. Install Remote Desktop Services Role</h3>
-                            <p>Server Manager → Add Roles and Features → Remote Desktop Services.</p>
+                            <h3>1. Enable Remote Desktop on Server</h3>
+                            <p>Server Manager → Configure Remote Desktop → Select "Allow remote connections to this computer" → Configure network level authentication.</p>
                         </div>
                         <div class="step">
-                            <h3>2. Configure RDS Licensing</h3>
-                            <p>Set up licensing server and configure CALs for user access.</p>
+                            <h3>2. Configure Remote Desktop on Workstations</h3>
+                            <p>Enable Remote Desktop on all client workstations (XP and Windows 7) → System Properties → Remote → Enable Remote Desktop.</p>
                         </div>
                         <div class="step">
-                            <h3>3. Deploy Session Collection</h3>
-                            <p>Create session hosts and configure user access policies.</p>
+                            <h3>3. Configure Firewall Settings</h3>
+                            <p>Open necessary ports (RDP TCP 3389) in Windows Firewall on both server and client workstations.</p>
                         </div>
                         <div class="step">
-                            <h3>4. Configure Remote Desktop Gateway</h3>
-                            <p>Set up secure external access through RD Gateway server.</p>
+                            <h3>4. Set Up User Permissions</h3>
+                            <p>Add appropriate user groups to "Remote Desktop Users" group on each workstation. Configure per-department access as needed.</p>
                         </div>
                         <div class="step">
-                            <h3>5. Test Remote Desktop Access</h3>
-                            <p>Verify client connectivity and user experience across devices.</p>
+                            <h3>5. Test Remote Desktop Connectivity</h3>
+                            <p>Test remote connections from server to workstations and vice versa. Verify authentication and proper desktop display.</p>
                         </div>
                     </div>
                     <div class="video-section">
@@ -1394,7 +1405,7 @@
                                 width="560" 
                                 height="315" 
                                 src="https://www.youtube.com/embed/RNb6NGs5xVw" 
-                                title="Remote Desktop Services" 
+                                title="TUP Remote Desktop Configuration" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
@@ -1403,29 +1414,29 @@
                     </div>
                 </div>
 
-                <!-- IIS -->
-                <div id="iis" class="case-section">
-                    <h2>IIS Web Server Deployment</h2>
+                <!-- Web Server (IIS) -->
+                <div id="tup-web-server" class="case-section">
+                    <h2>7. Web Server (IIS) Setup</h2>
                     <div class="installation-steps">
                         <div class="step">
-                            <h3>1. Install IIS Server Role</h3>
-                            <p>Server Manager → Add Roles and Features → Web Server (IIS).</p>
+                            <h3>1. Install IIS 7 Web Server Role</h3>
+                            <p>Server Manager → Add Roles → Web Server (IIS) → Select required services (HTTP, static content, default document, directory browsing).</p>
                         </div>
                         <div class="step">
-                            <h3>2. Configure Default Website</h3>
-                            <p>Set up bindings, authentication, and basic security settings.</p>
+                            <h3>2. Create University Main Website</h3>
+                            <p>Create a simple university website hosted on IIS 7. Configure default website with TUP Taguig branding and basic information.</p>
                         </div>
                         <div class="step">
-                            <h3>3. Deploy Web Applications</h3>
-                            <p>Configure application pools and deploy web content and applications.</p>
+                            <h3>3. Create Department Websites</h3>
+                            <p>Create subdirectories in wwwroot folder for each department (Basic Arts, Electrical, Mechanical, Civil, Registrar, Director's Office, etc.). Configure separate websites or virtual directories.</p>
                         </div>
                         <div class="step">
-                            <h3>4. Implement Security Measures</h3>
-                            <p>Configure SSL certificates, firewalls, and security policies.</p>
+                            <h3>4. Configure Website Settings</h3>
+                            <p>Set up proper bindings, authentication (Windows Authentication), and security settings for each department website.</p>
                         </div>
                         <div class="step">
-                            <h3>5. Monitor and Optimize Performance</h3>
-                            <p>Set up logging, monitoring, and performance tuning for web services.</p>
+                            <h3>5. Test Web Server Functionality</h3>
+                            <p>Test all websites from client workstations. Verify proper access permissions and content display for each department.</p>
                         </div>
                     </div>
                     <div class="video-section">
@@ -1435,7 +1446,7 @@
                                 width="560" 
                                 height="315" 
                                 src="https://www.youtube.com/embed/q43Ef6yhcgY" 
-                                title="IIS Web Server Deployment" 
+                                title="TUP Web Server (IIS) Setup" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
@@ -1465,7 +1476,7 @@
                             <p>Set up drive mappings, printer deployments, and user preferences.</p>
                         </div>
                         <div class="step">
-                            <h3>5. Test and Trouleshoot GPO Application</h3>
+                            <h3>5. Test and Troubleshoot GPO Application</h3>
                             <p>Verify policy application and resolve any conflicts or issues.</p>
                         </div>
                     </div>
@@ -1476,7 +1487,7 @@
                                 width="560" 
                                 height="315" 
                                 src="https://www.youtube.com/embed/czZmlBq6dNk" 
-                                title="Group Policy Implementation" 
+                                title="TUP Group Policy Configuration" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
@@ -1485,29 +1496,33 @@
                     </div>
                 </div>
 
-                <!-- Windows Deployment Service Case -->
-                <div id="wds-case" class="case-section">
-                    <h2>Windows Deployment Service Case Study</h2>
+                <!-- Windows Deployment Services -->
+                <div id="tup-wds" class="case-section">
+                    <h2>9. Windows Deployment Services Setup</h2>
                     <div class="installation-steps">
                         <div class="step">
-                            <h3>1. Plan Deployment Infrastructure</h3>
-                            <p>Design network architecture and plan for PXE boot requirements.</p>
+                            <h3>1. Install WDS Server Role</h3>
+                            <p>Server Manager → Add Roles → Windows Deployment Services → Configure with default settings. Ensure DHCP and DNS are properly configured.</p>
                         </div>
                         <div class="step">
-                            <h3>2. Install WDS Server Role</h3>
-                            <p>Deploy WDS with proper DHCP configuration and network settings.</p>
+                            <h3>2. Configure WDS Server</h3>
+                            <p>Open Windows Deployment Services console → Configure server → Set PXE response settings → Configure DHCP options (Option 60, 66, 67).</p>
                         </div>
                         <div class="step">
-                            <h3>3. Create Deployment Images</h3>
-                            <p>Build and customize Windows images for different hardware types.</p>
+                            <h3>3. Add Windows XP Installation Image</h3>
+                            <p>Add boot image for Windows XP → Add install image for Windows XP → Configure appropriate answer file (unattend.xml) for automated installation.</p>
                         </div>
                         <div class="step">
-                            <h3>4. Configure Unattended Installation</h3>
-                            <p>Create answer files for automated deployment and configuration.</p>
+                            <h3>4. Add Windows 7 Installation Image</h3>
+                            <p>Add boot image for Windows 7 → Add install image for Windows 7 → Configure answer file for Windows 7 deployment with proper drivers.</p>
                         </div>
                         <div class="step">
-                            <h3>5. Deploy and Manage Systems</h3>
-                            <p>Execute network deployments and monitor system provisioning process.</p>
+                            <h3>5. Configure Deployment Settings</h3>
+                            <p>Set up computer naming convention, domain join settings, and application deployment. Configure driver packages for different hardware types.</p>
+                        </div>
+                        <div class="step">
+                            <h3>6. Test WDS Deployment</h3>
+                            <p>Test PXE boot from client workstations → Verify both XP and Windows 7 deployments work correctly → Check domain join and application installation.</p>
                         </div>
                     </div>
                     <div class="video-section">
@@ -1517,7 +1532,7 @@
                                 width="560" 
                                 height="315" 
                                 src="https://www.youtube.com/embed/lyclshFgqyg" 
-                                title="Windows Deployment Service Case Study" 
+                                title="TUP Windows Deployment Services Setup" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
